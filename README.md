@@ -33,28 +33,28 @@ TODOS:
 - send receipt via SMS or EMAIL
 - Social Media Login
 
-Installation
+##Installation
 ----
-Auto Installer
+#Auto Installer
+
 Unzip the contents of the zip file to a folder on your computer.
 Upload the Entire phpmixbill folder to your website / server
 Next you can rename the folder to whatever you like (billing, finance, manage etc..)
 Now visit the uploaded location using your web browser to run the installer process.
-Follow the instructions on screen to install PHPMixBill
-For security, Delete the install directory inside system folder.
+Follow the instructions on screen to install PHPMixBill For security, Delete the install directory inside system folder.
 If you see blank page after installation, it might be your compiled folder permission is not writable. Please make permission 755 compiled directory inside ui folder to store the generated contents from theme.
 if you get error after submit database configuration, create chmod 777 folder system, retry instalation, after finish, chmod 755 folder system
 
-Manual Install
-To install manually, follow this steps-
 
-Unzip the contents of the zip file to a folder on your computer.
-Upload the Entire phpmixbill folder to your website / server
-Next you can rename the folder to whatever you like (billing, finance, manage etc..)
+#Manual Install
+To install manually, follow this steps-Unzip the contents of the zip file to a folder on your computer.
+Upload the Entire phpmixbill folder to your website / server Next you can rename the folder to whatever you like (billing, finance, manage etc..)
 Sample config file is available here- system/config.sample.php, Rename it to config.php & put it in same location (/system/config.php) Open config file using a text editor & Put the database info and url.
 Import database. Database file is located here- system/install/phpmixbill.sql
 For security, Delete the install directory inside system folder.
-CHMOD
+
+#CHMOD
+
 Make writeable file html inside pages except index.html
 
 chmod 664 pages/*.html
