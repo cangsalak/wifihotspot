@@ -1,146 +1,210 @@
--- pjl SQL Dump
--- Server version:5.6.25
--- Generated: 2015-10-30 08:21:49
--- Current PHP version: 5.6.11
--- Host: localhost
--- Database:biling
--- --------------------------------------------------------
--- Structure for 'tbl_appconfig'
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 27, 2019 at 03:55 AM
+-- Server version: 5.7.26
+-- PHP Version: 7.0.33
+-- create by Yauwarut Cangsalak
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `phpmixbill`
 --
 
-CREATE TABLE `tbl_appconfig` (
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_appconfig`
+--
+
+DROP TABLE IF EXISTS `tbl_appconfig`;
+CREATE TABLE IF NOT EXISTS `tbl_appconfig` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `setting` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `value` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
--- Dump Data for `tbl_appconfig`
+--
+-- Dumping data for table `tbl_appconfig`
 --
 
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("1","CompanyName","PHPMixBill v5.0");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("2","theme","default");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("3","currency_code","Rp.");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("4","language","english");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("5","show-logo","1");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("6","nstyle","blue");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("7","timezone","Asia/Jakarta");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("8","dec_point",".");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("9","thousands_sep",",");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("10","rtl","0");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("11","address","Jl. Kubangsari VII No. 31 RT.03/RW.06 Bandung");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("12","phone","081322225141");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("13","date_format","d M Y");
-INSERT INTO tbl_appconfig (`id`,`setting`,`value`) VALUES ("14","note","Thank you...");
+INSERT INTO `tbl_appconfig` (`id`, `setting`, `value`) VALUES
+(1, 'CompanyName', 'ATTC-RTA>HOTSPOT'),
+(2, 'theme', 'default'),
+(3, 'currency_code', 'B'),
+(4, 'language', 'thailand'),
+(5, 'show-logo', '1'),
+(6, 'nstyle', 'blue'),
+(7, 'timezone', 'Asia/Bangkok'),
+(8, 'dec_point', '.'),
+(9, 'thousands_sep', ','),
+(10, 'rtl', '0'),
+(11, 'address', '153 หมู่ 3 ต.ชัยนารายณ์ อ.ชัยบาดาล จ.ลพบุรี'),
+(12, 'phone', '0890167912'),
+(13, 'date_format', 'm/d/Y'),
+(14, 'note', 'Thank you...');
 
 -- --------------------------------------------------------
--- Structure for 'tbl_bandwidth'
+
+--
+-- Table structure for table `tbl_bandwidth`
 --
 
-CREATE TABLE `tbl_bandwidth` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `tbl_bandwidth`;
+CREATE TABLE IF NOT EXISTS `tbl_bandwidth` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name_bw` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `rate_down` int(10) unsigned NOT NULL,
+  `rate_down` int(10) UNSIGNED NOT NULL,
   `rate_down_unit` enum('Kbps','Mbps') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `rate_up` int(10) unsigned NOT NULL,
+  `rate_up` int(10) UNSIGNED NOT NULL,
   `rate_up_unit` enum('Kbps','Mbps') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
--- Structure for 'tbl_customers'
+
+--
+-- Table structure for table `tbl_customers`
 --
 
-CREATE TABLE `tbl_customers` (
+DROP TABLE IF EXISTS `tbl_customers`;
+CREATE TABLE IF NOT EXISTS `tbl_customers` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `username` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `password` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `fullname` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `address` text CHARACTER SET latin1,
-  `phonenumber` varchar(20) CHARACTER SET latin1 DEFAULT '0',
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `fullname` varchar(45) NOT NULL,
+  `address` text,
+  `phonenumber` varchar(20) DEFAULT '0',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
--- Structure for 'tbl_language'
+
+--
+-- Table structure for table `tbl_language`
 --
 
-CREATE TABLE `tbl_language` (
+DROP TABLE IF EXISTS `tbl_language`;
+CREATE TABLE IF NOT EXISTS `tbl_language` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL,
-  `folder` varchar(32) NOT NULL,
-  `author` varchar(60) DEFAULT NULL,
+  `name` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `folder` varchar(32) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `author` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
--- Dump Data for `tbl_language`
+--
+-- Dumping data for table `tbl_language`
 --
 
-INSERT INTO tbl_language (`id`,`name`,`folder`,`author`) VALUES ("1","Indonesia","indonesia","Ismail Marzuqi");
-INSERT INTO tbl_language (`id`,`name`,`folder`,`author`) VALUES ("2","English","english","Ismail Marzuqi");
+INSERT INTO `tbl_language` (`id`, `name`, `folder`, `author`) VALUES
+(1, 'Thailand', 'thailand', 'cangsalak'),
+(2, 'English', 'english', 'Ismail Marzuqi');
 
 -- --------------------------------------------------------
--- Structure for 'tbl_logs'
+
+--
+-- Table structure for table `tbl_logs`
 --
 
-CREATE TABLE `tbl_logs` (
+DROP TABLE IF EXISTS `tbl_logs`;
+CREATE TABLE IF NOT EXISTS `tbl_logs` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `type` varchar(50) NOT NULL,
   `description` text NOT NULL,
   `userid` int(10) NOT NULL,
   `ip` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
--- Structure for 'tbl_message'
+--
+-- Dumping data for table `tbl_logs`
 --
 
-CREATE TABLE `tbl_message` (
+INSERT INTO `tbl_logs` (`id`, `date`, `type`, `description`, `userid`, `ip`) VALUES
+(1, '2019-06-09 10:51:01', 'Admin', 'admin Login Successful', 1, '::1'),
+(2, '2019-06-09 10:55:16', 'Admin', '[admin]: Settings Saved Successfully', 1, '::1'),
+(3, '2019-06-09 10:58:14', 'Admin', '[admin]: Settings Saved Successfully', 1, '::1'),
+(4, '2019-06-09 10:59:16', 'Admin', '[admin]: Settings Saved Successfully', 1, '::1'),
+(5, '2019-06-09 10:59:18', 'Admin', '[admin]: Settings Saved Successfully', 1, '::1'),
+(6, '2019-06-09 11:00:25', 'Admin', '[admin]: Settings Saved Successfully', 1, '::1'),
+(7, '2019-06-09 11:00:48', 'Admin', '[admin]: บันทึกการตั้งค่าสำเร็จแล้ว', 1, '::1'),
+(8, '2019-06-09 11:01:24', 'Admin', '[admin]: บันทึกการตั้งค่าสำเร็จแล้ว', 1, '::1'),
+(9, '2019-06-09 11:13:09', 'Admin', '[admin]: ผู้ใช้อัปเดตสำเร็จแล้ว', 1, '::1'),
+(10, '2019-06-09 11:41:01', 'Admin', '[admin]: บันทึกการตั้งค่าสำเร็จแล้ว', 1, '::1'),
+(11, '2019-06-09 11:42:13', 'Admin', '[admin]: บันทึกการตั้งค่าสำเร็จแล้ว', 1, '::1'),
+(12, '2019-06-09 12:28:02', 'Admin', '[admin]: บันทึกการตั้งค่าสำเร็จแล้ว', 1, '::1'),
+(13, '2019-06-27 10:27:58', 'Admin', 'admin เข้าสู่ระบบสำเร็จ', 1, '::1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_message`
+--
+
+DROP TABLE IF EXISTS `tbl_message`;
+CREATE TABLE IF NOT EXISTS `tbl_message` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `from_user` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `to_user` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `title` varchar(60) CHARACTER SET latin1 NOT NULL,
-  `message` text CHARACTER SET latin1 NOT NULL,
-  `status` enum('0','1') CHARACTER SET latin1 NOT NULL DEFAULT '0',
+  `from_user` varchar(32) NOT NULL,
+  `to_user` varchar(32) NOT NULL,
+  `title` varchar(60) NOT NULL,
+  `message` text NOT NULL,
+  `status` enum('0','1') NOT NULL DEFAULT '0',
   `date` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
--- Structure for 'tbl_plans'
+
+--
+-- Table structure for table `tbl_plans`
 --
 
-CREATE TABLE `tbl_plans` (
+DROP TABLE IF EXISTS `tbl_plans`;
+CREATE TABLE IF NOT EXISTS `tbl_plans` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name_plan` varchar(40) CHARACTER SET latin1 NOT NULL,
+  `name_plan` varchar(40) NOT NULL,
   `id_bw` int(10) NOT NULL,
-  `price` varchar(40) CHARACTER SET latin1 NOT NULL,
-  `type` enum('Hotspot','PPPOE') CHARACTER SET latin1 NOT NULL,
-  `typebp` enum('Unlimited','Limited') CHARACTER SET latin1 DEFAULT NULL,
-  `limit_type` enum('Time_Limit','Data_Limit','Both_Limit') CHARACTER SET latin1 DEFAULT NULL,
-  `time_limit` int(10) unsigned DEFAULT NULL,
-  `time_unit` enum('Mins','Hrs') CHARACTER SET latin1 DEFAULT NULL,
-  `data_limit` int(10) unsigned DEFAULT NULL,
-  `data_unit` enum('MB','GB') CHARACTER SET latin1 DEFAULT NULL,
+  `price` varchar(40) NOT NULL,
+  `type` enum('Hotspot','PPPOE') NOT NULL,
+  `typebp` enum('Unlimited','Limited') DEFAULT NULL,
+  `limit_type` enum('Time_Limit','Data_Limit','Both_Limit') DEFAULT NULL,
+  `time_limit` int(10) UNSIGNED DEFAULT NULL,
+  `time_unit` enum('Mins','Hrs') DEFAULT NULL,
+  `data_limit` int(10) UNSIGNED DEFAULT NULL,
+  `data_unit` enum('MB','GB') DEFAULT NULL,
   `validity` int(10) NOT NULL,
-  `validity_unit` enum('Days','Months') CHARACTER SET latin1 NOT NULL,
+  `validity_unit` enum('Days','Months') NOT NULL,
   `shared_users` int(10) DEFAULT NULL,
-  `routers` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `pool` varchar(40) CHARACTER SET latin1 DEFAULT NULL,
+  `routers` varchar(32) NOT NULL,
+  `pool` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
--- Structure for 'tbl_pool'
+
+--
+-- Table structure for table `tbl_pool`
 --
 
-CREATE TABLE `tbl_pool` (
+DROP TABLE IF EXISTS `tbl_pool`;
+CREATE TABLE IF NOT EXISTS `tbl_pool` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `pool_name` varchar(40) NOT NULL,
   `range_ip` varchar(40) NOT NULL,
@@ -149,24 +213,30 @@ CREATE TABLE `tbl_pool` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
--- Structure for 'tbl_routers'
+
+--
+-- Table structure for table `tbl_routers`
 --
 
-CREATE TABLE `tbl_routers` (
+DROP TABLE IF EXISTS `tbl_routers`;
+CREATE TABLE IF NOT EXISTS `tbl_routers` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `ip_address` varchar(128) CHARACTER SET latin1 NOT NULL,
-  `username` varchar(50) CHARACTER SET latin1 NOT NULL,
-  `password` varchar(60) CHARACTER SET latin1 NOT NULL,
-  `description` varchar(50) CHARACTER SET latin1 DEFAULT NULL,
+  `name` varchar(32) NOT NULL,
+  `ip_address` varchar(128) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `description` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
--- Structure for 'tbl_transactions'
+
+--
+-- Table structure for table `tbl_transactions`
 --
 
-CREATE TABLE `tbl_transactions` (
+DROP TABLE IF EXISTS `tbl_transactions`;
+CREATE TABLE IF NOT EXISTS `tbl_transactions` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `invoice` varchar(25) NOT NULL,
   `username` varchar(32) NOT NULL,
@@ -182,31 +252,14 @@ CREATE TABLE `tbl_transactions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
--- Structure for 'tbl_user_recharges'
+
+--
+-- Table structure for table `tbl_users`
 --
 
-CREATE TABLE `tbl_user_recharges` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `customer_id` int(10) NOT NULL,
-  `username` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `plan_id` int(10) NOT NULL,
-  `namebp` varchar(40) CHARACTER SET latin1 NOT NULL,
-  `recharged_on` date NOT NULL,
-  `expiration` date NOT NULL,
-  `time` time NOT NULL,
-  `status` varchar(20) CHARACTER SET latin1 NOT NULL,
-  `method` enum('voucher','admin') CHARACTER SET latin1 NOT NULL,
-  `routers` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `type` varchar(15) CHARACTER SET latin1 NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
--- Structure for 'tbl_users'
---
-
-CREATE TABLE `tbl_users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `tbl_users`;
+CREATE TABLE IF NOT EXISTS `tbl_users` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` varchar(45) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `fullname` varchar(45) CHARACTER SET latin1 NOT NULL DEFAULT '',
   `password` text CHARACTER SET latin1 NOT NULL,
@@ -217,23 +270,55 @@ CREATE TABLE `tbl_users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
--- Dump Data for `tbl_users`
+--
+-- Dumping data for table `tbl_users`
 --
 
-INSERT INTO tbl_users (`id`,`username`,`fullname`,`password`,`user_type`,`status`,`last_login`,`creationdate`) VALUES ("1","admin","Ismail Marzuqi","$1$W44.ns/.$MUnR0NeBH9xAcXm0Oku2h1","Admin","Active","2015-10-30 18:27:02","2014-06-23 01:43:07");
+INSERT INTO `tbl_users` (`id`, `username`, `fullname`, `password`, `user_type`, `status`, `last_login`, `creationdate`) VALUES
+(1, 'admin', 'Administrator', '$1$W44.ns/.$MUnR0NeBH9xAcXm0Oku2h1', 'Admin', 'Active', '2019-06-27 10:27:58', '2014-06-23 01:43:07');
 
 -- --------------------------------------------------------
--- Structure for 'tbl_voucher'
+
+--
+-- Table structure for table `tbl_user_recharges`
 --
 
-CREATE TABLE `tbl_voucher` (
+DROP TABLE IF EXISTS `tbl_user_recharges`;
+CREATE TABLE IF NOT EXISTS `tbl_user_recharges` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
-  `type` enum('Hotspot','PPPOE') CHARACTER SET latin1 NOT NULL,
-  `routers` varchar(32) CHARACTER SET latin1 NOT NULL,
-  `id_plan` int(10) NOT NULL,
-  `code` varchar(55) CHARACTER SET latin1 NOT NULL,
-  `user` varchar(45) CHARACTER SET latin1 NOT NULL,
-  `status` varchar(25) CHARACTER SET latin1 NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `username` varchar(32) NOT NULL,
+  `plan_id` int(10) NOT NULL,
+  `namebp` varchar(40) NOT NULL,
+  `recharged_on` date NOT NULL,
+  `expiration` date NOT NULL,
+  `time` time NOT NULL,
+  `status` varchar(20) NOT NULL,
+  `method` enum('voucher','admin') NOT NULL,
+  `routers` varchar(32) NOT NULL,
+  `type` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_voucher`
+--
+
+DROP TABLE IF EXISTS `tbl_voucher`;
+CREATE TABLE IF NOT EXISTS `tbl_voucher` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `type` enum('Hotspot','PPPOE') NOT NULL,
+  `routers` varchar(32) NOT NULL,
+  `id_plan` int(10) NOT NULL,
+  `code` varchar(55) NOT NULL,
+  `user` varchar(45) NOT NULL,
+  `status` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
