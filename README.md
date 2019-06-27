@@ -58,9 +58,9 @@ Make writeable file html inside pages except index.html
 
 chmod 664 pages/*.html
 chmod 644 pages/index.html
-Open issue to get help
 
-baca [WIKI](https://github.com/ibnux/phpmixbill/wiki/Instalation)
+
+Open issue to get help
 
 System Requirements
 ----
