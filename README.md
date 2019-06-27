@@ -115,3 +115,7 @@ Donate to first Developer
 PayPal: iesien22@yahoo.com 
 
 Bank Mandiri: 130.00.1024957.4
+
+Donate to Developer Thailand
+----
+0890167912 
